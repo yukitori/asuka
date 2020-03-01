@@ -1,0 +1,35 @@
+<div class="header bg-theme-light text-white mb-4">
+    <div class="container d-flex flex-column flex-md-row">
+        <div class="navbar navbar-dark">
+            <h1 class="my-3 m-md-auto">@Title</h1>
+            <button class="navbar-toggler" @onclick="ToggleNavMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        
+        <!-- NavMenu -->
+        <div class="flex-grow-1 mb-3 m-md-auto @NavMenuCssClass">
+            <ul class="nav d-flex flex-column flex-md-row justify-content-end" @onclick="ToggleNavMenu">
+                <li class="nav-item px-md-2">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">HOME</NavLink>
+                </li>
+                <li class="nav-item px-md-2">
+                    <NavLink class="nav-link" href="todo">TODO</NavLink>
+                </li>
+            </ul>
+        </div>
+        <!-- End NavMenu -->
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+
+    private bool collapseNavMenu = true;
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

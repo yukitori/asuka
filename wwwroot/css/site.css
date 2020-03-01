@@ -1,0 +1,143 @@
+@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
+
+html, body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.main {
+    flex: 1;
+}
+
+.valid.modified:not([type=checkbox]) {
+    outline: 1px solid #26b050;
+}
+
+.invalid {
+    outline: 1px solid red;
+}
+
+.validation-message {
+    color: red;
+}
+
+#blazor-error-ui {
+    background: lightyellow;
+    bottom: 0;
+    box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+    display: none;
+    left: 0;
+    padding: 0.6rem 1.25rem 0.7rem 1.25rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+#blazor-error-ui .dismiss {
+    cursor: pointer;
+    position: absolute;
+    right: 0.75rem;
+    top: 0.5rem;
+}
+
+/****************** Bootstrap Overwrite *******************/
+
+.navbar-toggler {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-toggler.focus,
+.navbar-toggler:focus {
+    outline-color: #f3f3f3;
+}
+
+.header .nav-link {
+    padding: 15px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.header .nav-link.focus,
+.header .nav-link:focus {
+    color: #fff;
+}
+
+.header .nav-link.active,
+.header .nav-link:active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #20B2AA;
+    border-color: #20B2AA;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:hover {
+    background-color: #4a9e9a;
+    border-color: #4a9e9a;
+}
+
+.btn-primary.focus,
+.btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(128, 197, 194, 0.5);
+}
+
+.form-control.focus,
+.form-control:focus {
+    border-color: #80c5c2;
+    box-shadow: 0 0 0 0.2rem rgba(128, 197, 194, 0.25);
+}
+
+@media (min-width: 768px)
+{
+    .navbar-toggler {
+        display: none;
+    }
+
+    .header .collapse {
+        display: block;
+    }
+
+    .header .nav-link {
+        padding: 40px 30px 30px 30px;
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+
+    .header .nav-link.active,
+    .header .nav-link:active {
+        border-bottom: 4px solid #4a9e9a;
+    }
+}
+
+/********************** Personal Styles ***********************/
+
+.bg-theme-light {
+    background-color: #80c5c2;
+}
+
+.bg-theme-dark {
+    background-color: #20B2AA;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+}
+
+@media (min-width: 768px)
+{
+    .header h1 {
+        font-size: 1.8rem;
+    }
+
+    .border-md-right {
+        border-right: 1px solid #dee2e6 !important;
+    }
+
+    .border-md-bottom-0 {
+        border-bottom: 0 !important;
+    }
+}

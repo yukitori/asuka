@@ -1,0 +1,46 @@
+@page "/todo"
+
+<h2>Todo (@todos.Count(todo => !todo.IsDone))</h2>
+<div class="mt-3" style="max-width: 500px;">
+    @foreach(var todo in todos) {
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="checkbox" @bind="todo.IsDone" />
+                </div>
+            </div>
+            
+            <input type="text" class="form-control" @bind="todo.Title" />
+        </div>
+    }
+
+    <div class="input-group mb-3">
+        <input class="form-control" placeholder="Something todo" @bind="newTodo" />
+
+        <div class="input-group-append">
+            <button class="btn btn-primary" @onclick="AddTodo">添加待办事项</button>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@code {
+    private IList<TodoItem> todos = new List<TodoItem>();
+    private string newTodo;
+    private void AddTodo()
+    {
+        if(!string.IsNullOrWhiteSpace(newTodo))
+        {
+            todos.Add(new TodoItem { Title = newTodo });
+            newTodo = string.Empty;
+        }
+    }
+    public class TodoItem
+    {
+        public string Title { get; set; }
+        public bool IsDone { get; set; }
+    }
+}

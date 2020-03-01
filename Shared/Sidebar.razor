@@ -1,0 +1,64 @@
+@inject NavigationManager NavigationManager
+@implements IDisposable
+
+<iframe frameborder="no" 
+        border="0" 
+        marginwidth="0" 
+        marginheight="0" 
+        width="100%" 
+        height=52 
+        src="//music.163.com/outchain/player?type=2&id=39122073&auto=0&height=32"
+        style="margin: 0 0 10px -8px"
+        ></iframe>
+<div class="mt-2">
+    @foreach(var content in SidebarContents)
+    {
+        <p>@content</p>
+    }
+</div>
+
+@code {
+    private List<string> SidebarContents = new List<string>();
+
+    protected override void OnInitialized()
+    {
+        NavigationManager.LocationChanged += new EventHandler<LocationChangedEventArgs>(OnLocationChanged);
+        string uri = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+        ChangeContent(uri);
+    }
+
+    private void OnLocationChanged(Object sender, EventArgs e)
+    {
+        string uri = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+        ChangeContent(uri);
+    }
+
+    private void ChangeContent(String uri)
+    {
+        SidebarContents.Clear();
+        switch(uri)
+        {
+            case "todo":
+                SidebarContents.AddRange(new List<string> {
+                    "居然真的实现侧边栏内容的切换了……",
+                    "什么啊，我还挺强的嘛。",
+                    "左边是按入门教程写的 Todo list，虽然没什么用，不过趁着制作这个页面的时间把 Bootstrap 的组件样式熟悉了一下，感觉还行。"
+                });
+                break;
+            default:
+                SidebarContents.AddRange(new List<string> {
+                    "暂时无意义的侧边栏。左边也是随便找了些文字填充一下，没什么意义。",
+                    "未来可能挂一些挂件之类的？或者让内容随页面变化，暂时还没有想好，总之先占个位置吧。",
+                    "顺带一提上面的播放器似乎不会因为切换页面而被打断，我喜欢这一点。"
+                });
+                break;
+        }
+
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= new EventHandler<LocationChangedEventArgs>(OnLocationChanged);
+    }
+}
