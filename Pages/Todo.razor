@@ -1,7 +1,8 @@
 @page "/todo"
 
+<h2>控件样式测试页面</h2>
 <h2>Todo: @todos.Count(todo => !todo.IsDone)</h2>
-<div class="mt-3" style="max-width: 500px;">
+<div style="max-width: 500px;">
     @foreach(var todo in todos) {
         <div class="input-group mb-3">
             <div class="input-group-prepend">
